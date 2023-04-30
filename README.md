@@ -2,7 +2,7 @@
 
 #### By Asia Kaplanyan
 
-#### An MVC website for exploring opportunities for volunteering, donating or offering free services
+#### An MVC website to explore opportunities for volunteering, donating or offering free services
 
 ## Technologies Used  
 
