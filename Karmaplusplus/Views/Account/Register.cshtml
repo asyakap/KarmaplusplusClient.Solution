@@ -1,0 +1,49 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Karmaplusplus.ViewModels
+
+@model RegisterViewModel
+
+<h2>Register a new user</h2>
+<hr />
+
+@if(!ViewData.ModelState.IsValid) 
+{
+  @Html.ValidationSummary("Please fix the following error(s) and then resubmit the form:") 
+}
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post))
+{
+  <div class="form-group">
+    @Html.Label("First Name:")
+    @Html.TextBoxFor(user=> user.FirstName, new { @class = "form-control" })
+  </div>
+
+  <div class="form-group">
+    @Html.LabelFor(user => user.Email, new { @class = "control-label" })
+    @Html.TextBoxFor(user=> user.Email, new { @class = "form-control" })
+  </div>
+
+  <div class="form-group">
+    @Html.LabelFor(user=> user.Password, new { @class = "control-label" })
+    @Html.TextBoxFor(user=> user.Password, new { @class = "form-control", type = "password" })
+  </div>
+
+  <div class="form-group">
+    @Html.LabelFor(user=> user.ConfirmPassword, new { @class = "control-label" })
+    @Html.TextBoxFor(user=> user.ConfirmPassword, new { @class = "form-control", type = "password" })
+  </div>
+
+  <br>
+
+  <div class="form-group">
+    <input type="submit" value="Register" class="btn btn-primary" />
+  </div>
+}
+<br>
+
+<div id="navlinks">
+  <p>@Html.ActionLink("Back to accounts page", "Index")</p>
+</div>

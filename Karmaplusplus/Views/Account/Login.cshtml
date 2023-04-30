@@ -1,0 +1,35 @@
+@{
+  Layout = "_Layout";
+}
+
+@using HiddenGarden.ViewModels
+
+@model LoginViewModel
+
+<h2>Log in with your account</h2>
+<hr />
+
+@if(!ViewData.ModelState.IsValid) 
+{
+  @Html.ValidationSummary("Please fix the following error(s) and then resubmit the form:") 
+}
+
+@using (Html.BeginForm())
+{
+  <div class="form-group">
+    @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+
+    @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+    @Html.TextBoxFor(m => m.Password, new { @class="form-control", type = "password" })
+  </div>
+
+  <div class="form-group">
+    <input type="submit" class="btn btn-primary" value="Log in" />
+  </div
+>}
+<br>
+
+<div id="navlinks">
+  <p>@Html.ActionLink("Register for an account", "Register")</p>
+</div>
