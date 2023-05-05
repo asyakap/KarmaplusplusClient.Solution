@@ -1,0 +1,16 @@
+@{
+  ViewData["Title"] = $"Details for {Model.ServiceName}";
+}
+
+<br>
+<h2>Service Details</h2>
+<br>
+<h4>@Model.ServiceName</h4>
+<br>
+<h5>Description: @Model.Description</h5>
+<p>Email: @Model.Email</p>
+<p>Zip Code: @Model.ZipCode</p>
+<br>
+<div id="navlinks">
+<p>@Html.ActionLink("Edit details", "Edit", new { id = @Model.ServiceId }) | @Html.ActionLink("Delete service", "Delete", new { id = @Model.ServiceId }) | @Html.ActionLink("Return to all services", "Index")</p>
+</div>

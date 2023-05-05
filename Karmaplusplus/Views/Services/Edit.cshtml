@@ -1,0 +1,45 @@
+@{
+  ViewData["Title"] = $"Edit {Model.ServiceName}";
+}
+
+@model Karmaplusplus.Models.Service
+
+<h4>Edit @Model.ServiceName</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.ServiceId)
+  @Html.HiddenFor(model => model.UserId)
+
+  <div class="form-group">
+    @Html.LabelFor(model => model.ServiceName, new { @class = "control-label" })
+    @Html.TextBoxFor(model => model.ServiceName, new { @class = "form-control" })
+  </div>
+
+  <div class="form-group">
+    @Html.LabelFor(model => model.Description, new { @class = "control-label" })
+    @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+  </div>
+
+  <div class="form-group">
+  @Html.LabelFor(model => model.Email, new { @class = "control-label" })
+  @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+  </div>
+
+  <div class="form-group">
+  @Html.LabelFor(model => model.ZipCode, new { @class = "control-label" })
+  @Html.TextBoxFor(model => model.ZipCode, new { @class = "form-control" })
+  </div>
+  
+  <br>
+  <br>
+
+  <div class="form-group">
+    <input type="submit" value="Save" class="btn btn-primary"/>
+  </div>
+}
+
+<br>
+<div id="navlinks">
+<p>@Html.ActionLink("Back to details", "Details", new {id = @Model.ServiceId})</p>
+</div>

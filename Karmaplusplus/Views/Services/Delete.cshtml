@@ -1,0 +1,17 @@
+
+@{
+  ViewData["Title"] = $"Delete {Model.ServiceName}";
+}
+
+@model Karmaplusplus.Models.Service
+
+<h4>Are you sure you want to remove @Model.ServiceName?</h4>
+
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete" class="btn btn-primary"/>
+}
+
+<div id="navlinks">
+<p>@Html.ActionLink("Back to details", "Details", new { id = @Model.ServiceId})</p>
+</div>

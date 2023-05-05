@@ -10,9 +10,9 @@ namespace Karmaplusplus.Models
     [Required(ErrorMessage = "Please enter the type of service you want to offer")]
     public string ServiceName { get; set; }
     public string Description { get; set; }
-    public string email { get; set; }
+    public string Email { get; set; }
     public int ZipCode { get; set; }
-    //public string UserId { get; set; }
+    public string UserId { get; set; }
 
 
     public static List<Service> GetServices()
