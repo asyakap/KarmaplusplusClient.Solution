@@ -20,22 +20,22 @@ body {
 
 .btn-primary {
   color: #fff;
-  background-color: #72A276;
-  border-color: #72A276;
+  background-color: #ab8dca;
+  border-color: #ab8dca;
   margin: 5px;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #86CD82;
-  border-color: #86CD82;
+  background-color: #ab8dca;
+  border-color: #ab8dca;
   margin: 5px;
 }
 
 .btn-primary:active {
   color: #fff;
-  background-color: #86CD82;
-  border-color: #86CD82;
+  background-color: #ab8dca;
+  border-color: #ab8dca;
 
   margin: 5px;
 }
@@ -46,7 +46,7 @@ body {
 }
 
 a:hover {
-  color: #86CD82;
+  color: #ab8dca;
 }
 
 div#navlinks {
@@ -54,13 +54,13 @@ div#navlinks {
 }
 
 a {
-  color: #72A276;
+  color: #75137c;
   text-decoration: none;
 	position: relative;
 	display: inline-block;
-  color: #72A276;
+  color: #75137c;
   font-weight:lighter;
-  font-size:larger;
+  font-size:24px;
 }
 
 a::before {
