@@ -45,7 +45,7 @@ namespace Karmaplusplus.Models
     public static void Put(Service service)
     {
       string jsonService = JsonConvert.SerializeObject(service);
-      ApiHelper.Put(backyard.ServiceId, jsonService);
+      ApiHelper.Put(service.ServiceId, jsonService);
     }
 
     public static void Delete(int id)

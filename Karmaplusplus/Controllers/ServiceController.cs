@@ -151,33 +151,33 @@ public class ServicesController : Controller
     return View(error);
   }
 
-  // [HttpPost, ActionName("Search")]
-  // public async Task<IActionResult> Search(string name)
-  // {
-  //   if(name == null)
-  //   {
-  //     return RedirectToAction("Index");
-  //   }
-  //   List<Backyard> BackyardList = new List<Backyard> { };
-  //   using (var httpClient = new HttpClient())
-  //   {
-  //     using (var response = await httpClient.GetAsync($"https://localhost:7225/api/Backyards?pageSize=1001"))
-  //     {
-  //       string apiResponse = await response.Content.ReadAsStringAsync();
-  //       JObject jsonResponse = JObject.Parse(apiResponse);
-  //       JArray backyardArray = (JArray)jsonResponse["data"];
-  //       BackyardList = backyardArray.ToObject<List<Backyard>>();
-  //     }
-  //   }
-  //   List<Backyard> result = new List<Backyard> { };
-  //   foreach(Backyard backyard in BackyardList)
-  //   {
-  //     if (backyard.Description.ToLower().Contains(name.ToLower()))
-  //     {
-  //       result.Add(backyard);
-  //     }
-  //   }
-  //   ViewBag.SearchResults = name;
-  //   return View(result);
-  // }
+  [HttpPost, ActionName("Search")]
+  public async Task<IActionResult> Search(string name)
+  {
+    if(name == null)
+    {
+      return RedirectToAction("Index");
+    }
+    List<Service> ServiceList = new List<Service> { };
+    using (var httpClient = new HttpClient())
+    {
+      using (var response = await httpClient.GetAsync($"https://localhost:7225/api/Services?pageSize=1001"))
+      {
+        string apiResponse = await response.Content.ReadAsStringAsync();
+        JObject jsonResponse = JObject.Parse(apiResponse);
+        JArray serviceArray = (JArray)jsonResponse["data"];
+        ServiceList = serviceArray.ToObject<List<Service>>();
+      }
+    }
+    List<Service> result = new List<Service> { };
+    foreach(Service service in ServiceList)
+    {
+      if (service.Description.ToLower().Contains(name.ToLower()))
+      {
+        result.Add(service);
+      }
+    }
+    ViewBag.SearchResults = name;
+    return View(result);
+  }
 }
