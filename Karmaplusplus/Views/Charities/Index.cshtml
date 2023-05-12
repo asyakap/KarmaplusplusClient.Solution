@@ -1,0 +1,14 @@
+@{
+  ViewData["Title"] = "Charities";
+}
+
+<div class="">
+  
+  @using (Html.BeginForm("Search", "Charities")) {
+  <label class="mdl-textfield__label" for="sample3">Search Charities By Cause:</label>
+  <br>
+  <input class="mdl-textfield__input" type="text" placeholder = "Search" name="name" id="sample3"><br><br>
+  <input type="submit" class = "btn btn-primary" name = "name" value="Search"/>
+  }
+
+</div>
