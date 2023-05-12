@@ -8,13 +8,13 @@ namespace Karmaplusplus.Models
 [Keyless]
   public class Charity
   {
-    public string name { get; }
-    public string profileUrl { get; }
-    public string description { get; }
-    public string ein { get; }
-    public string logoCloudinaryId { get; }
-    public string logoUrl { get; }
-    public string location { get; }
+    public string name { get; set; }
+    public string profileUrl { get; set; }
+    public string description { get; set; }
+    public string ein { get; set; }
+    public string logoCloudinaryId { get; set; }
+    public string logoUrl { get; set; }
+    public string location { get; set; }
 
 
 

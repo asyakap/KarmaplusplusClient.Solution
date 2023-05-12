@@ -7,6 +7,7 @@
 <div class="container">
 
   <h3>Search Results For '@ViewBag.SearchResults':</h3>
+  <br>
   @if (Model.Count == 0)
   {
     <p> No charities match this search </p>
@@ -19,7 +20,7 @@
         <li>
           <p><strong>@charity.name</strong></p>
           <p>@charity.description</p>
-          <p>@charity.profileUrl</p>
+          <p><a href="@charity.profileUrl">@charity.profileUrl</a></p>
           <p>@charity.location</p>
         </li>
         <br>
