@@ -53,5 +53,13 @@ namespace Karmaplusplus.Models
       RestResponse response = await client.GetAsync(request);
       return response.Content;
     }
+
+    public static async Task<string> GetAllCharities()
+    {
+      RestClient client = new RestClient("https://partners.every.org/v0.2/browse/animals?apiKey=pk_live_0010085fa96129b630dc18c80f8728f8");
+      RestRequest request = new RestRequest($"api/Charities", Method.Get);
+      RestResponse response = await client.GetAsync(request);
+      return response.Content;
+    }
   }
 }
