@@ -25,16 +25,20 @@ Install the tools that are introduced in [this series of lessons on LearnHowToPr
 
 First, following the instructions in the README of [this repo](https://github.com/asyakap/KarmaplusplusServicesApi.Solution) to set up and run the Services API.
 
+
 ### Set Up and Run This Project 
 
 1. Clone this repo.
-2. Open the terminal and navigate to this project's production directory called "Karmaplusplus".
-3. Within the production directory "Karmaplusplus", run `dotnet watch run` in the command line to start the project in development mode with a watcher.
-4. Open the browser to _https://localhost:7028/_. If you cannot access https://localhost:7028 it is likely because you have not configured a .NET developer security certificate for HTTPS. To learn about this, visit: [Redirecting to HTTPS and Issuing a Security Certificate](https://www.learnhowtoprogram.com/lessons/redirecting-to-https-and-issuing-a-security-certificate).
+2. Go to the Charities API web page and create an API Key - https://www.every.org/developer
+3. Open the terminal and navigate to the project's production directory called "Karmaplusplus".
+4. Run the command "dotnet user-secrets set apikey YOUR-API-KEY" from step 2.
+5. Within the production directory "Karmaplusplus", run `dotnet watch run` in the command line to start the project in development mode with a watcher.
+6. Open the browser to _https://localhost:7028/_. If you cannot access https://localhost:7028 it is likely because you have not configured a .NET developer security certificate for HTTPS. To learn about this, visit: [Redirecting to HTTPS and Issuing a Security Certificate](https://www.learnhowtoprogram.com/lessons/redirecting-to-https-and-issuing-a-security-certificate).
+
 
 ## Known Bugs 
 
-* As of 28 April 2023, no known bugs.
+* As of 12 May 2023, no known bugs.
 
 ## License 
 Enjoy the site! If you have questions or suggestions for fixing the code, please contact me!
