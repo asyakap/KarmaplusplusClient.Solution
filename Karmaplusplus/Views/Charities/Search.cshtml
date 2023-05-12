@@ -16,9 +16,15 @@
     <ol>
       @foreach (Charity charity in Model)
       {
-        <li><strong>@charity.Name</strong> - @charity.Description</li>
+        <li>
+          <p><strong>@charity.name</strong></p>
+          <p>@charity.description</p>
+          <p>@charity.profileUrl</p>
+          <p>@charity.location</p>
+        </li>
+        <br>
       }
     </ol>
   }
-<p>@Html.ActionLink("Return search page", "Index")</p>
+<p>@Html.ActionLink("Return to the search page", "Index")</p>
 </div>

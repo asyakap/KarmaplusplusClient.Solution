@@ -33,16 +33,16 @@ public class CharitiesController : Controller
     List<Charity> CharityList = new List<Charity> { };
     using (var httpClient = new HttpClient())
     {
-      using (var response = await httpClient.GetAsync($"https://partners.every.org/v0.2/browse/{name}?apiKey=pk_live_0010085fa96129b630dc18c80f8728f8"))
+      using (var response = await httpClient.GetAsync($"https://partners.every.org/v0.2/search/{name}?apiKey=pk_live_0010085fa96129b630dc18c80f8728f8"))
       {
         string apiResponse = await response.Content.ReadAsStringAsync();
         JObject jsonResponse = JObject.Parse(apiResponse);
-        JArray charityArray = (JArray)jsonResponse["data"];
+        JArray charityArray = (JArray)jsonResponse["nonprofits"];
         CharityList = charityArray.ToObject<List<Charity>>();
       }
     }
-    Charity charity = CharityList[0];
-    return View(charity);
+    ViewBag.SearchResults = name;
+    return View(CharityList);
   }
 
 
