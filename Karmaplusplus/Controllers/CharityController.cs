@@ -23,7 +23,6 @@ public class CharitiesController : Controller
         return View();
     }
 
-string apiKey = ConfigurationManager.appSettings["APIKey"];
 
   [HttpPost, ActionName("Search")]
   public async Task<IActionResult> Search(string name, string apiKey)
@@ -34,10 +33,17 @@ string apiKey = ConfigurationManager.appSettings["APIKey"];
     {
       return RedirectToAction("Index");
     }
+    
+    //add secret apikey
+    var config = new ConfigurationBuilder()
+          .AddUserSecrets<Program>()
+          .Build();
+    string apikey = config["apikey"];
+
     List<Charity> CharityList = new List<Charity> { };
     using (var httpClient = new HttpClient())
     {
-      using (var response = await httpClient.GetAsync($"https://partners.every.org/v0.2/browse/{name}?apiKey=pk_live_0010085fa96129b630dc18c80f8728f8"))
+      using (var response = await httpClient.GetAsync($"https://partners.every.org/v0.2/browse/{name}?apiKey={apikey}"))
       {
         string apiResponse = await response.Content.ReadAsStringAsync();
         JObject jsonResponse = JObject.Parse(apiResponse);
