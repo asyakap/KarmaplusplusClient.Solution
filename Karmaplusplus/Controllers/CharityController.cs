@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
+using System.Configuration;
 
 namespace Karmaplusplus.Controllers;
 
@@ -19,13 +20,16 @@ public class CharitiesController : Controller
   }
     public IActionResult Index()
     { 
-      System.Diagnostics.Debug.WriteLine("I'm here");
         return View();
     }
 
+string apiKey = ConfigurationManager.appSettings["APIKey"];
+
   [HttpPost, ActionName("Search")]
-  public async Task<IActionResult> Search(string name)
+  public async Task<IActionResult> Search(string name, string apiKey)
   {
+  
+  
     if(name == null)
     {
       return RedirectToAction("Index");
