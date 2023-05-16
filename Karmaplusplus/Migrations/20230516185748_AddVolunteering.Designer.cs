@@ -3,6 +3,7 @@ using System;
 using Karmaplusplus.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Karmaplusplus.Migrations
 {
     [DbContext(typeof(KarmaplusplusContext))]
-    partial class KarmaplusplusContextModelSnapshot : ModelSnapshot
+    [Migration("20230516185748_AddVolunteering")]
+    partial class AddVolunteering
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -137,42 +139,6 @@ namespace Karmaplusplus.Migrations
                     b.HasKey("ServiceId");
 
                     b.ToTable("Services");
-                });
-
-            modelBuilder.Entity("Karmaplusplus.Models.Volunteering", b =>
-                {
-                    b.Property<int>("VolunteeringId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Date")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Location")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Time")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("VolunteeringName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("ZipCode")
-                        .HasColumnType("longtext");
-
-                    b.HasKey("VolunteeringId");
-
-                    b.ToTable("Volunteerings");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
