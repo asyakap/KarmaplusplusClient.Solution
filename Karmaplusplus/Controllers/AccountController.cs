@@ -39,8 +39,20 @@ namespace Karmaplusplus.Controllers
           userServices = serviceArray.ToObject<List<Service>>();
         }
       }
+      List<Volunteering> userVolunteerings = new List<Volunteering> { };
+      using (var httpClient = new HttpClient())
+      {
+        using (var response = await httpClient.GetAsync($"https://localhost:7226/api/Volunteerings?userId={userId}"))
+        {
+          string apiResponse = await response.Content.ReadAsStringAsync();
+          JObject jsonResponse = JObject.Parse(apiResponse);
+          JArray volunteeringArray = (JArray)jsonResponse["data"];
+          userVolunteerings = volunteeringArray.ToObject<List<Volunteering>>();
+        }
+      }
+      
       ViewBag.FirstName = currentUser.FirstName;
-      return View(userServices);
+      return View(new KeyValuePair<List<Service>,List<Volunteering>>(userServices,userVolunteerings));
     }
 
     public IActionResult Register()
