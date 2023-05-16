@@ -25,6 +25,10 @@ Install the tools that are introduced in [this series of lessons on LearnHowToPr
 
 First, following the instructions in the README of [this repo](https://github.com/asyakap/KarmaplusplusServicesApi.Solution) to set up and run the Services API.
 
+### Set Up and Run the Karma++ Volunteering opportunities API Project 
+
+First, following the instructions in the README of [this repo](https://github.com/asyakap/KarmaplusplusVolunteeringApi.Solution) to set up and run the Volunteering API.
+
 
 ### Set Up and Run This Project 
 
@@ -38,7 +42,7 @@ First, following the instructions in the README of [this repo](https://github.co
 
 ## Known Bugs 
 
-* As of 12 May 2023, no known bugs.
+* As of May 16th, 2023, no known bugs.
 
 ## License 
 Enjoy the site! If you have questions or suggestions for fixing the code, please contact me!
