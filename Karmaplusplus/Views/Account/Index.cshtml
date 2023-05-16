@@ -6,20 +6,17 @@
 <hr />
 @if (User.Identity.IsAuthenticated)
 {
-  <p>Hello @ViewBag.FirstName!</p>
-  <h4>My Services</h4>
-  @foreach (Service service in Model)
-{
-  <div class="col-md-4">
-    <div class="card mb-4">
-      <div class="card-body">
-        <h5 class="card-title">@service.ServiceName</h5>
-        <p class="card-text">@service.Description</p>
-        <a href="/Services/Details/@(service.ServiceId)" class="btn btn-primary">Details</a>
-      </div>
-    </div>
+  <h3>Hello @ViewBag.FirstName!</h3>
+  <br>
+  <br>
+  <div id="navlinks">
+    <p>@Html.ActionLink("See my services", "Services")</p>
   </div>
-}
+    <div id="navlinks">
+    <p>@Html.ActionLink("See my volunteering opportunities", "Volunteerings")</p>
+  </div>
+  <br>
+
   @using (Html.BeginForm("LogOff", "Account"))
   {
     <input type="submit" class = "btn btn-primary" value="Log out" />

@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+  <h4>My Services</h4>
+  <br>
+  @foreach (Service service in Model)
+{
+  <div class="col-md-4">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">@service.ServiceName</h5>
+        <p class="card-text">@service.Description</p>
+        <a href="/Services/Details/@(service.ServiceId)" class="btn btn-primary">Details</a>
+      </div>
+    </div>
+  </div>
+}
+  <div id="navlinks">
+    <p>@Html.ActionLink("Back to Account page", "Index")</p>
+  </div>
+}

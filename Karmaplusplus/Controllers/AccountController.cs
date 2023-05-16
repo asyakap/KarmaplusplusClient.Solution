@@ -5,8 +5,8 @@ using Karmaplusplus.ViewModels;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json.Linq;
-
-
+using System;
+using System.Linq;
 
 namespace Karmaplusplus.Controllers
 {
@@ -39,7 +39,35 @@ namespace Karmaplusplus.Controllers
           userServices = serviceArray.ToObject<List<Service>>();
         }
       }
+
+      ViewBag.FirstName = currentUser.FirstName;
+      return View();
+    }
+
+    public async Task<IActionResult> Services()
+    { 
+      List<Service> userServices = new List<Service> { };
+      string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+      using (var httpClient = new HttpClient())
+      {
+        using (var response = await httpClient.GetAsync($"https://localhost:7225/api/Services?userId={userId}"))
+        {
+          string apiResponse = await response.Content.ReadAsStringAsync();
+          JObject jsonResponse = JObject.Parse(apiResponse);
+          JArray serviceArray = (JArray)jsonResponse["data"];
+          userServices = serviceArray.ToObject<List<Service>>();
+        }
+      }
+     
+      return View(userServices);
+    }
+
+    public async Task<IActionResult> Volunteerings()
+    { 
       List<Volunteering> userVolunteerings = new List<Volunteering> { };
+      string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
       using (var httpClient = new HttpClient())
       {
         using (var response = await httpClient.GetAsync($"https://localhost:7226/api/Volunteerings?userId={userId}"))
@@ -50,9 +78,7 @@ namespace Karmaplusplus.Controllers
           userVolunteerings = volunteeringArray.ToObject<List<Volunteering>>();
         }
       }
-      
-      ViewBag.FirstName = currentUser.FirstName;
-      return View(new KeyValuePair<List<Service>,List<Volunteering>>(userServices,userVolunteerings));
+      return View(userVolunteerings);
     }
 
     public IActionResult Register()
