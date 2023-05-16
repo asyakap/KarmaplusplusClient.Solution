@@ -1,0 +1,64 @@
+@{
+  ViewData["Title"] = "Volunteerings";
+}
+
+@using Karmaplusplus.Models;
+
+
+
+<h1>All Volunteering opportunities</h1>
+<p>@ViewBag.ErrorMessage</p>
+<p>@Html.ActionLink("Add a new volunteering opportunity", "Create")</p>
+<div class="row">
+    @foreach (Volunteering volunteering in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">@volunteering.VolunteeringName</h5>
+                    <p class="card-text">@volunteering.Description</p>
+                    <a href="/Volunteerings/Details/@(volunteering.VolunteeringId)" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+<div class="row">
+    <div class="col">
+        <ul class="pagination">
+  @if(ViewBag.CurrentPage > 1){
+    <a href='/Volunteerings?page=@(ViewBag.CurrentPage - 1)&pageSize=@ViewBag.PageSize'>
+            <button class="btn btn-primary">Prev</button>
+        </a>
+  }
+  @if(ViewBag.CurrentPage < ViewBag.TotalPages)
+  {
+    <a href='/Volunteerings?page=@(ViewBag.CurrentPage + 1)&pageSize=@ViewBag.PageSize'>
+            <button class="btn btn-primary">Next</button>
+        </a>
+  }
+  @if(ViewBag.CurrentPage == ViewBag.TotalPages && ViewBag.Remainder != 0)
+  {
+    <a href='/Volunteerings?page=@(ViewBag.CurrentPage + 1)&pageSize=@ViewBag.PageSize'>
+            <button class="btn btn-primary">Next</button>
+        </a>
+  }
+  </ul>
+  </div>
+</div>
+
+<br>
+<hr>
+
+<div class="">
+  
+  @using (Html.BeginForm("Search", "Volunteerings")) {
+  <label class="mdl-textfield__label" for="sample3">Search Volunteering Opportunities By Description:</label>
+  <br>
+  <input class="mdl-textfield__input" type="text" placeholder = "Search" name="name" id="sample3"><br><br>
+  <input type="submit" class = "btn btn-primary" name = "name" value="Search"/>
+  }
+
+</div>

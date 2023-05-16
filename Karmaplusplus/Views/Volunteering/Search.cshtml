@@ -1,0 +1,24 @@
+@{
+  ViewData["Title"] = "Volunteerings";
+}
+@using Karmaplusplus.Models;
+@using System.Collections.Generic;
+
+<div class="container">
+
+  <h3>Search Results For '@ViewBag.SearchResults':</h3>
+  @if (Model.Count == 0)
+  {
+    <p> No volunteerings match this search </p>
+  }
+  else
+  {
+    <ol>
+      @foreach (Volunteering volunteering in Model)
+      {
+        <li><strong><a href="/Volunteerings/Details/@(volunteering.VolunteeringId)">@volunteering.VolunteeringName</a></strong> - @volunteering.Description</li>
+      }
+    </ol>
+  }
+<p>@Html.ActionLink("Return to all volunteering opportunities", "Index")</p>
+</div>

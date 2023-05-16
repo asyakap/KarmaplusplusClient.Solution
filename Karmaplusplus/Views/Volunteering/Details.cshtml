@@ -1,0 +1,20 @@
+@{
+  ViewData["Title"] = $"Details for {Model.VolunteeringName}";
+}
+
+<br>
+<h2>Volunteering Opportunity Details</h2>
+<br>
+<h4>@Model.VolunteeringeName</h4>
+<br>
+<p>Description: @Model.Description</p>
+<p>Email: @Model.Email</p>
+<p>Location: @Model.Location</p>
+<p>Zip Code: @Model.ZipCode</p>
+<p>Date: @Model.Date</p>
+<p>Time: @Model.Time</p>
+
+<br>
+<div id="navlinks">
+<p>@Html.ActionLink("Edit details", "Edit", new { id = @Model.VolunteeringId }) | @Html.ActionLink("Delete volunteering opportunity", "Delete", new { id = @Model.VolunteeringId }) | @Html.ActionLink("Return to all volunteering opportunities", "Index")</p>
+</div>

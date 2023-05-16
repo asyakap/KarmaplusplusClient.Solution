@@ -8,7 +8,7 @@ namespace Karmaplusplus.Models
   {
     public int VolunteeringId { get; set; }
     [Required(ErrorMessage = "Please enter the type of volunteering you require")]
-    public string VoluteeringName { get; set; }
+    public string VolunteeringName { get; set; }
     public string Description { get; set; }
     public string Email { get; set; }
     public string Location { get; set; }
