@@ -61,5 +61,58 @@ namespace Karmaplusplus.Models
       RestResponse response = await client.GetAsync(request);
       return response.Content;
     }
+
+
+//API helper for Volunteering
+    public static async Task<string> GetAllVolunteerings()
+    {
+      RestClient client = new RestClient("https://localhost:7226/");
+      RestRequest request = new RestRequest($"api/Volunteerings", Method.Get);
+      RestResponse response = await client.GetAsync(request);
+      return response.Content;
+    }
+
+    public static async Task<string> GetVolunteering(int id)
+    {
+      RestClient client = new RestClient("https://localhost:7226/");
+      RestRequest request = new RestRequest($"api/Volunteerings/{id}", Method.Get);
+      RestResponse response = await client.GetAsync(request);
+      return response.Content;
+    }
+
+    public static async void PostVolunteering(string newVolunteering)
+    {
+      RestClient client = new RestClient("https://localhost:7226/");
+      RestRequest request = new RestRequest($"api/Volunteerings", Method.Post);
+      request.AddHeader("Content-Type", "application/json");
+      request.AddJsonBody(newVolunteering);
+      await client.PostAsync(request);
+    }
+
+    public static async void PutVolunteering(int id, string newVolunteering)
+    {
+      RestClient client = new RestClient("https://localhost:7226/");
+      RestRequest request = new RestRequest($"api/Volunteerings/{id}", Method.Put);
+      request.AddHeader("Content-Type", "application/json");
+      request.AddJsonBody(newVolunteering);
+      await client.PutAsync(request);
+    }
+    
+    public static async void DeleteVolunteering(int id)
+    {
+      RestClient client = new RestClient("https://localhost:7226/");
+      RestRequest request = new RestRequest($"api/Volunteerings/{id}", Method.Delete);
+      request.AddHeader("Content-Type", "application/json");
+      await client.DeleteAsync(request);
+    }
+
+    public static async Task<string> SearchVolunteering(string name)
+    {
+      RestClient client = new RestClient("http://localhost:7226/");
+      RestRequest request = new RestRequest($"api/Volunteerings", Method.Get);
+      RestResponse response = await client.GetAsync(request);
+      return response.Content;
+    }
   }
 }
+
