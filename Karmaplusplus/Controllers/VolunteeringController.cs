@@ -118,17 +118,8 @@ public class VolunteeringsController : Controller
 
   public ActionResult Delete(int id)
   {
-    string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
     Volunteering volunteering = Volunteering.GetVolunteeringDetails(id);
-    if(volunteering.UserId != userId)
-    {
-      Error error = new Error { ErrorMessage = "You can only edit or delete your own posts!" };
-      return RedirectToAction("Error", error);
-    }
-    else
-    {
-      return View(volunteering);
-    }
+    return View(volunteering);
   }
 
 

@@ -120,17 +120,9 @@ public class ServicesController : Controller
 
   public ActionResult Delete(int id)
   {
-    string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
     Service service = Service.GetDetails(id);
-    if(service.UserId != userId)
-    {
-      Error error = new Error { ErrorMessage = "You can only edit or delete your own posts!" };
-      return RedirectToAction("Error", error);
-    }
-    else
-    {
-      return View(service);
-    }
+    return View(service);
+    
   }
 
 
