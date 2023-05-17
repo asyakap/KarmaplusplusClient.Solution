@@ -65,6 +65,10 @@ public class ServicesController : Controller
         ServiceList = serviceArray.ToObject<List<Service>>();
       }
     }
+        
+    
+    string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    ViewBag.UserId = userId;
     Service service = ServiceList[0];
     return View(service);
   }
@@ -103,6 +107,7 @@ public class ServicesController : Controller
         ServiceList = serviceArray.ToObject<List<Service>>();
       }
     }
+  
     Service service = ServiceList[0];
     if(service.UserId != userId)
     {

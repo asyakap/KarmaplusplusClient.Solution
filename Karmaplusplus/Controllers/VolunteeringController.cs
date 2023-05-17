@@ -65,6 +65,8 @@ public class VolunteeringsController : Controller
         VolunteeringList = volunteeringArray.ToObject<List<Volunteering>>();
       }
     }
+    string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    ViewBag.UserId = userId;
     Volunteering volunteering = VolunteeringList[0];
     return View(volunteering);
   }

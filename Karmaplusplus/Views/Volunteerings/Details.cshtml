@@ -15,6 +15,12 @@
 <p>Time: @Model.Time</p>
 
 <br>
+@if (@Model.UserId == @ViewBag.UserId)
+{
 <div id="navlinks">
-<p>@Html.ActionLink("Edit details", "Edit", new { id = @Model.VolunteeringId }) | @Html.ActionLink("Delete volunteering opportunity", "Delete", new { id = @Model.VolunteeringId }) | @Html.ActionLink("Return to all volunteering opportunities", "Index")</p>
+<p>@Html.ActionLink("Edit details", "Edit", new { id = @Model.VolunteeringId }) | @Html.ActionLink("Delete volunteering opportunity", "Delete", new { id = @Model.VolunteeringId }) </p>
+</div>
+}
+<div id="navlinks">
+<p>@Html.ActionLink("Return to all volunteering opportunities", "Index")</p>
 </div>

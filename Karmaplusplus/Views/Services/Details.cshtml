@@ -11,6 +11,12 @@
 <p>Email: @Model.Email</p>
 <p>Zip Code: @Model.ZipCode</p>
 <br>
+@if (@Model.UserId == @ViewBag.UserId)
+{
 <div id="navlinks">
-<p>@Html.ActionLink("Edit details", "Edit", new { id = @Model.ServiceId }) | @Html.ActionLink("Delete service", "Delete", new { id = @Model.ServiceId }) | @Html.ActionLink("Return to all services", "Index")</p>
+<p>@Html.ActionLink("Edit details", "Edit", new { id = @Model.ServiceId }) | @Html.ActionLink("Delete service", "Delete", new { id = @Model.ServiceId }) </p>
+</div>
+}
+<div id="navlinks">
+  <p>@Html.ActionLink("Return to all services", "Index")</p>
 </div>
