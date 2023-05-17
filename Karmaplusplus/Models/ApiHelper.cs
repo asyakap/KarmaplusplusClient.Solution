@@ -6,7 +6,7 @@ namespace Karmaplusplus.Models
   {
     public static async Task<string> GetAll()
     {
-      RestClient client = new RestClient("https://localhost:7225/");
+      RestClient client = new RestClient("containers-us-west-209.railway.app");
       RestRequest request = new RestRequest($"api/Services", Method.Get);
       RestResponse response = await client.GetAsync(request);
       return response.Content;
