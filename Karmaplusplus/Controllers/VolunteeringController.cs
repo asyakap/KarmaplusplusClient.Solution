@@ -92,8 +92,7 @@ public class VolunteeringsController : Controller
 
   public async Task<IActionResult> Edit(int id)
   {
-    string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-    ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+ 
     List<Volunteering> VolunteeringList = new List<Volunteering> { };
     using (var httpClient = new HttpClient())
     {
@@ -106,15 +105,8 @@ public class VolunteeringsController : Controller
       }
     }
     Volunteering volunteering = VolunteeringList[0];
-    if(volunteering.UserId != userId)
-    {
-      Error error = new Error { ErrorMessage = "You can only edit or delete your own posts!" };
-      return RedirectToAction( "Error", error );
-    }
-    else
-    {
-      return View(volunteering);
-    }
+    return View(volunteering);
+    
   }
 
   [HttpPost]

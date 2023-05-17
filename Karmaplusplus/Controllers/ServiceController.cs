@@ -94,8 +94,6 @@ public class ServicesController : Controller
 
   public async Task<IActionResult> Edit(int id)
   {
-    string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-    ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
     List<Service> ServiceList = new List<Service> { };
     using (var httpClient = new HttpClient())
     {
@@ -109,15 +107,8 @@ public class ServicesController : Controller
     }
   
     Service service = ServiceList[0];
-    if(service.UserId != userId)
-    {
-      Error error = new Error { ErrorMessage = "You can only edit or delete your own posts!" };
-      return RedirectToAction( "Error", error );
-    }
-    else
-    {
-      return View(service);
-    }
+    return View(service);
+    
   }
 
   [HttpPost]
